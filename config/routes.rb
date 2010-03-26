@@ -1,4 +1,7 @@
 ClojurePopularity::Application.routes.draw do |map|
+  root :to => "git_hub_ranks#index"
+  
+  resources :git_hub_ranks, :only => [:index]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

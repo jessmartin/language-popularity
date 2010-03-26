@@ -1,0 +1,8 @@
+<ul>
+  <% @git_hub_ranks.each do |ghr| %>
+    <li>
+      <strong>#<%= ghr.rank %></strong>
+      <%= ghr.language.name %>
+    </li>
+  <% end -%>
+</ul>
