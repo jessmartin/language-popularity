@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100326152026) do
+ActiveRecord::Schema.define(:version => 20100326181514) do
 
   create_table "git_hub_ranks", :force => true do |t|
     t.integer  "language_id"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(:version => 20100326152026) do
 
   create_table "languages", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stack_overflow_questions", :force => true do |t|
+    t.integer  "number_of_questions"
+    t.date     "date"
+    t.integer  "language_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -3,27 +3,31 @@ require 'open-uri'
 desc "General Cron Task"
 task :cron => :environment do
   Language.all.each do |language|
-    begin
-      language_url = "http://github.com/languages/#{language.name.gsub(" ", "%20")}"
-      doc = Nokogiri::HTML(open(language_url))
-      rank = /#(\d+)/.match(doc.css("h1 em").text)[1]
-      GitHubRank.create(:language => language, :rank => rank, :date => Date.today)
-    rescue OpenURI::HTTPError => e
-      Rails.logger.info("Attempting to open #{language_url} for #{language.name} and got '#{e.message}'")
-    end
+    scrape_git_hub_ranks(language)
+    scrape_stack_overflow_questions(language)
   end
 end
 
-# def self.html_for(year, patch_number)
-#   open(url_for(year, patch_number))
-# end
-# 
-# def self.attributes_for(year, patch_number)
-#   doc = Nokogiri::HTML(html_for(year, patch_number))
-#   {
-#     :title => doc.css("h2.subtitle").text,
-#     :sb_num => "MS#{year}-#{patch_number}",
-#     :sb_version => doc.css("p:contains('Version:')").text.gsub("Version: ","V"),
-#     :comments => comments_for(doc)
-#   }
-# end
+def scrape_git_hub_ranks(language)
+  begin
+    github_language_name = language.name.sub("#", " Sharp").sub(" ", "%20")
+    language_url = "http://github.com/languages/#{github_language_name}"
+    doc = Nokogiri::HTML(open(language_url))
+    rank = /#(\d+)/.match(doc.css("h1 em").text)[1]
+    GitHubRank.create(:language => language, :rank => rank, :date => Date.today)
+  rescue OpenURI::HTTPError => e
+    Rails.logger.info("Attempting to open #{language_url} for #{language.name} and got '#{e.message}'")
+  end
+end
+
+def scrape_stack_overflow_questions(language)
+  begin
+    stack_overflow_language_name = language.name.sub("#", "%23").sub(" ", "-")
+    language_url = "http://stackoverflow.com/questions/tagged?tagnames=#{stack_overflow_language_name}&sort=stats"
+    doc = Nokogiri::HTML(open(language_url))
+    number_of_questions = doc.css(".summarycount")[2].text.sub(",","").to_i
+    StackOverflowQuestion.create(:language => language, :number_of_questions => number_of_questions, :date => Date.today)
+  rescue OpenURI::HTTPError => e
+    Rails.logger.info("Attempting to open #{language_url} for #{language.name} and got '#{e.message}'")
+  end
+end
