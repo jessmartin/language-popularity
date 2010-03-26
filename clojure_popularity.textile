@@ -1,0 +1,6 @@
+Programming Language Popularity
+
+Sources:
+- Languages on GitHub (http://github.com/languages/clojure)
+- Tagged Questions on StackOverflow (http://stackoverflow.com/questions/tagged?tagnames=clojure&sort=stats)
+- 
