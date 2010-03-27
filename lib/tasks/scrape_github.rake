@@ -26,7 +26,7 @@ def scrape_stack_overflow_questions(language)
     language_url = "http://stackoverflow.com/questions/tagged?tagnames=#{stack_overflow_language_name}&sort=stats"
     doc = Nokogiri::HTML(open(language_url))
     number_of_questions = doc.css(".summarycount")[2].text.sub(",","").to_i
-    StackOverflowQuestion.create(:language => language, :number_of_questions => number_of_questions, :date => Date.today)
+    sof = StackOverflowQuestion.create(:language => language, :number_of_questions => number_of_questions, :date => Date.today)
   rescue OpenURI::HTTPError => e
     Rails.logger.info("Attempting to open #{language_url} for #{language.name} and got '#{e.message}'")
   end
