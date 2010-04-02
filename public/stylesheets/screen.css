@@ -1,0 +1,26 @@
+body { font-family: "Helvetica Neue", helvetica, arial, clean, sans-serif; background-color: #F5F4EF; color: #000305; line-height: 1.429; margin: 0; padding: 0; }
+
+.body { width: 800px; margin:0 auto; }
+
+header { padding:2.5em 0 0; z-index: 100; }
+header, section, footer, aside, nav, article, figure { display:block; clear: both; }
+
+section { z-index: 90; padding: 20px; }
+#placeholder canvas { z-index: 90; }
+
+footer {-moz-border-radius:10px 10px 10px 10px; background:none repeat scroll 0 0 #FFFFFF; margin-bottom:2em; overflow:hidden; padding:20px; width:760px; }
+
+h1 { font-size:250%; font-weight: bold; float: left; }
+
+span.heading { font-size: 153.9%; float: left; margin: 14px 7px 0 7px; }
+span.relative { position: relative; float: left; }
+
+ul#language-picker { position: absolute; height: 49px; overflow: hidden; font-size: 123.1%; text-decoration: none; -moz-border-radius:10px 10px 10px 10px; background-color: #FFFFFF; width: 150px; }
+ul#language-picker:hover { overflow: visible; height: 100px; }
+ul#language-picker li a { display: block; -moz-border-radius:10px 10px 10px 10px; background-color: #FFFFFF; padding: 10px; text-decoration: none; color: #333; }
+ul#language-picker li a:hover, ul#language-picker li a:hover span { color: #C74451; }
+ul#language-picker li a span { font-size: 70%; line-height: 6px; display: block; color: #777; }
+
+.heading { }
+
+div#choices label { padding: 5px 10px 5px 2px; width: 100px; display: inline-block; }

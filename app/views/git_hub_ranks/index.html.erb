@@ -1,8 +1,28 @@
-<ul>
-  <% @git_hub_ranks.each do |ghr| %>
-    <li>
-      <strong>#<%= ghr.rank %></strong>
-      <%= ghr.language.name %>
-    </li>
-  <% end -%>
-</ul>
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function () {
+    var myData;
+    $.getJSON('languages/1/git_hub_ranks', function(data) {
+      myData = data.data;
+      console.log(myData);
+    
+      $.plot($("#placeholder"), myData, {
+        yaxis: { min: 0 },
+        xaxis: { 
+          // tickDecimals: 0, 
+          mode: "time", 
+          timeformat: "%m/%d/%y",
+        },
+        series: {
+          points: { show: true, fill: false },
+          lines: { show: true }
+        }
+      });
+    });
+  
+    plotAccordingToChoices();
+  });
+</script>
+
+<div id="placeholder" style="width: 800px; height: 400px; position: relative; ">
+  
+</div>
