@@ -5,27 +5,42 @@
   <title>Language Popularity</title>
   <link rel="stylesheet" href="stylesheets/reset.css" type="text/css" />
   <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" />
-  <%= javascript_include_tag "jquery-1.4.2.min", "jquery.flot.min" %>
+  <%= javascript_include_tag "jquery-1.4.2.min", "jquery.flot.min", "application" %>
 </head>
 
 <body id="index" class="home">
   <header class="body">
     <h1>Language Popularity, </h1>
     <span class="heading">as judged by</span>
-    <span class="relative">
-      <ul class="heading" id="language-picker">
-        <li>
-          <a href="<%= stack_overflow_questions_path %>">
-            StackOverflow
-            <span># of Questions</span>
-          </a>
-        </li>
-        <li>
-          <a href="<%= git_hub_ranks_path %>">
-            GitHub
-            <span>Most Popular Language</span>
-          </a>
-        </li>
+    <span class="absolute">
+      <ul class="heading" id="source-picker">
+        <%- if @selected_tab == 'stack_overflow_questions' -%>
+          <li>
+            <a href="<%= stack_overflow_questions_path %>">
+              StackOverflow
+              <span># of Questions</span>
+            </a>
+          </li>
+          <li>
+            <a href="<%= git_hub_ranks_path %>">
+              GitHub
+              <span>Most Popular Language</span>
+            </a>
+          </li>
+        <%- else -%>
+          <li>
+            <a href="<%= git_hub_ranks_path %>">
+              GitHub
+              <span>Most Popular Language</span>
+            </a>
+          </li>
+          <li>
+            <a href="<%= stack_overflow_questions_path %>">
+              StackOverflow
+              <span># of Questions</span>
+            </a>
+          </li>
+        <%- end -%>
       </ul>
     </span>
   </header>

@@ -8,19 +8,80 @@ header, section, footer, aside, nav, article, figure { display:block; clear: bot
 section { z-index: 90; padding: 20px; }
 #placeholder canvas { z-index: 90; }
 
-footer {-moz-border-radius:10px 10px 10px 10px; background:none repeat scroll 0 0 #FFFFFF; margin-bottom:2em; overflow:hidden; padding:20px; width:760px; }
+footer {
+  -moz-border-radius:10px 10px 10px 10px; 
+  -webkit-border-radius:10px 10px;
+  border-radius:10px 10px 10px 10px; 
+  background:none repeat scroll 0 0 #FFFFFF; 
+  margin-bottom:2em; 
+  overflow:hidden; 
+  padding:20px; 
+  width:760px; 
+}
 
-h1 { font-size:250%; font-weight: bold; float: left; }
+h1 { font-size:250%; float: left; text-shadow: 1px 1px 2px #999;}
 
 span.heading { font-size: 153.9%; float: left; margin: 14px 7px 0 7px; }
-span.relative { position: relative; float: left; }
+span.absolute { position: absolute; float: left; z-index: 100; }
 
-ul#language-picker { position: absolute; height: 49px; overflow: hidden; font-size: 123.1%; text-decoration: none; -moz-border-radius:10px 10px 10px 10px; background-color: #FFFFFF; width: 150px; }
-ul#language-picker:hover { overflow: visible; height: 100px; }
-ul#language-picker li a { display: block; -moz-border-radius:10px 10px 10px 10px; background-color: #FFFFFF; padding: 10px; text-decoration: none; color: #333; }
-ul#language-picker li a:hover, ul#language-picker li a:hover span { color: #C74451; }
-ul#language-picker li a span { font-size: 70%; line-height: 6px; display: block; color: #777; }
+ul#source-picker {
+  position: absolute;
+  height: 49px;
+  overflow: hidden;
+  font-size: 123.1%;
+  text-decoration: none;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px;
+  border-radius: 10px 10px;
+  background-color: #FFFFFF;
+  width: 150px;
+}
+ul#source-picker:hover { overflow: visible; height: 100px; }
+ul#source-picker   li a {
+  display: block;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px;
+  border-radius: 10px 10px;
+  background-color: #FFFFFF;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+ul#source-picker li a:hover, ul#source-picker li a:hover span { color: #C74451; }
+ul#source-picker li a span { font-size: 70%; line-height: 6px; display: block; color: #777; }
+
+h2.choose_language { font-size: 150%; margin: 20px 0 10px; }
+ul#choices { 
+  -moz-column-count: 4;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 20px;
+  column-count: 4;
+  column-gap: 20px;
+}
+ul#choices li.language { 
+  display: block;
+  margin-bottom: 4px;
+}
+ul#choices li.language span { 
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #fff;
+  display: inline-block;
+  padding: 0 4px;
+}
+ul#choices li.language span.selected { 
+  background-color: #ccc;
+}
+ul#choices li.language input { 
+  margin-right: 10px;
+  padding: 3px;
+}
+ul#choices li.language label { 
+  padding: 3px;
+  display: inline-block;
+}
 
 .heading { }
 
-div#choices label { padding: 5px 10px 5px 2px; width: 100px; display: inline-block; }

@@ -1,28 +1,71 @@
 <script type="text/javascript" charset="utf-8">
+  var myData = [];
+
   $(document).ready(function () {
-    var myData;
-    $.getJSON('languages/1/git_hub_ranks', function(data) {
-      myData = data.data;
-      console.log(myData);
-    
+    var languages = {
+      <% @languages.each do |language| -%>
+        "<%= language.name %>": {
+          name: "<%= language.name %>",
+          id: "<%= language.id %>"
+        },
+      <% end -%>
+    };
+  
+    addLanguageCheckboxes(languages);
+    selectDefaultLanguages();
+    plotWithData();
+  });
+
+  function addDataAndReplot() {
+    var languageId = $(this).attr("name");
+    var languageName = $(this).attr("id");
+  
+    if (removeExistingLanguage(languageName) == true) {
+      $(this).parents("span").removeClass("selected");
+      plotWithData();
+    } else {
+      $(this).parents("span").addClass("selected");
+      $.getJSON('languages/' + languageId + '/git_hub_ranks', function(data) {
+        myData.push(data);
+        plotWithData();
+      });
+    }
+  }
+
+  function removeExistingLanguage(languageName) {
+    deleted = false;
+    $.each(myData, function(index, language) {
+      if (language.label == languageName) {
+        myData.splice(index, 1);
+        deleted = true;
+      }
+    });
+    return deleted;
+  }
+
+  function plotWithData() {
+    if (myData.length > 0) {
       $.plot($("#placeholder"), myData, {
-        yaxis: { min: 0 },
+        yaxis: { 
+          min: 0
+        },
         xaxis: { 
           // tickDecimals: 0, 
           mode: "time", 
-          timeformat: "%m/%d/%y",
+          timeformat: "%m/%d/%y"
         },
         series: {
-          points: { show: true, fill: false },
+          points: { show: true, fill: true },
           lines: { show: true }
         }
       });
-    });
-  
-    plotAccordingToChoices();
-  });
+    } else {
+      // Do something creative with the blank state
+    }
+  }
 </script>
 
 <div id="placeholder" style="width: 800px; height: 400px; position: relative; ">
   
 </div>
+<%= render :partial => 'shared/languages' %>
