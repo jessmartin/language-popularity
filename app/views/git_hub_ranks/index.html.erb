@@ -47,12 +47,13 @@
     if (myData.length > 0) {
       $.plot($("#placeholder"), myData, {
         yaxis: { 
-          min: 0
+          min: 0.5,
+          invert: true
         },
         xaxis: { 
           // tickDecimals: 0, 
           mode: "time", 
-          timeformat: "%m/%d/%y"
+          timeformat: "%m/%d/%y",
         },
         series: {
           points: { show: true, fill: true },
