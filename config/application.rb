@@ -35,6 +35,7 @@ module ClojurePopularity
     #   g.template_engine :erb
     #   g.test_framework  :test_unit, :fixture => true
     # end
+    config.secret_token = "some secret phrase of at least 30 characters"
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters << :password
