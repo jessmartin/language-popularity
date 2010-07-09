@@ -3,11 +3,16 @@ TODO:
 - Show only languages that are checked @done
 - Auto-refresh the graph when a language is selected @done
 - Select the languages on first load that are shown @done
+- Test in Safari @done
+- Adapt GitHub Rank graph to be appropriate for displaying most popular (flip x-axis??) @done
+
+
 - Describe the Language Popularity site's purpose in the box below
+- Switch to GET with params posted on the URL so they can be bookmarked
 - Brand with Relevance
-- Test in Safari
-- Adapt GitHub Rank graph to be appropriate for displaying most popular (flip x-axis??)
-- Hover over point should display amount
-- Hover over line should display Language
+- Add explanation of each rank
 - Add Google Analytics
 - Add a label for the axes
+
+- Hover over point should display amount
+- Hover over line should display Language
