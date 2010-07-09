@@ -10,7 +10,7 @@ end
 
 def scrape_git_hub_ranks(language)
   begin
-    github_language_name = language.name.sub("#", " Sharp").sub(" ", "%20")
+    github_language_name = language.name.sub("#", "%23").sub(" ", "%20")
     language_url = "http://github.com/languages/#{github_language_name}"
     doc = Nokogiri::HTML(open(language_url))
     rank = /#(\d+)/.match(doc.css("h1 em").text)[1]
