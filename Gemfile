@@ -1,9 +1,6 @@
 source "http://rubygems.org"
 
-gem "rails", "3.0.0.beta4"
-
-## Bundle edge rails:
-# gem "rails", :git => "git://github.com/rails/rails.git"
+gem "rails"
 
 # ActiveRecord requires a database adapter. By default,
 # Rails has selected sqlite3.
